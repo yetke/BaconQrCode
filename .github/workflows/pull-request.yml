@@ -32,6 +32,12 @@ jobs:
           php-version: ${{ matrix.php-versions }}
           extensions: iconv, imagick
           coverage: xdebug
+      - name: Upload Snapshot Files
+        uses: actions/upload-artifact@v4
+        with:
+          name: phpunit-snapshots
+          path: tests/__snapshots__/
+          retention-days: 7
 
       - name: Get composer cache directory
         id: composer-cache
